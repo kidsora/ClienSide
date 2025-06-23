@@ -10,23 +10,33 @@ import { AuthContext } from "../context/AuthContext";
 const App = () => {
   const { authUser } = useContext(AuthContext);
   return (
-    <div className="bg-[url('./src/assets/bgImage.png')] bg-contain">
-      <Toaster />
-      <Routes>
-        <Route
-          path="/"
-          element={authUser ? <HomePage /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/login"
-          element={!authUser ? <LoginPage /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/profile"
-          element={authUser ? <ProfilePage /> : <Navigate to="/login" />}
-        />
-      </Routes>
-    </div>
+    <div
+  style={{
+    backgroundImage: "url('/bgImage.png')",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    minHeight: "100vh",
+    width: "100%",
+  }}
+>
+  <Toaster />
+  <Routes>
+    <Route
+      path="/"
+      element={authUser ? <HomePage /> : <Navigate to="/login" />}
+    />
+    <Route
+      path="/login"
+      element={!authUser ? <LoginPage /> : <Navigate to="/" />}
+    />
+    <Route
+      path="/profile"
+      element={authUser ? <ProfilePage /> : <Navigate to="/login" />}
+    />
+  </Routes>
+</div>
+
   );
 };
 
